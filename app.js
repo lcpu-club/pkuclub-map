@@ -11,16 +11,19 @@ const REGION_RANGES = [
 
 const state = { clubs: [], query: "", region: 0, selectedBooth: null };
 const els = {
+  searchForm: document.querySelector("#search-form"),
+  searchPanel: document.querySelector(".search-panel"),
   searchInput: document.querySelector("#search-input"),
   clearSearch: document.querySelector("#clear-search"),
-  allResults: document.querySelector("#all-results"),
   regionFilters: document.querySelector("#region-filters"),
   resultCount: document.querySelector("#result-count"),
   activeFilter: document.querySelector("#active-filter"),
+  resultsColumn: document.querySelector(".results-column"),
   results: document.querySelector("#results"),
   mapRegion: document.querySelector("#map-region"),
   mapFrame: document.querySelector(".map-frame"),
   mapZones: [...document.querySelectorAll("[data-map-zone]")],
+  backToSearch: document.querySelector("#back-to-search"),
 };
 
 function normalize(text) {
@@ -127,13 +130,13 @@ els.clearSearch.addEventListener("click", () => {
   els.searchInput.focus();
 });
 
-els.allResults.addEventListener("click", () => {
-  state.query = "";
-  state.region = 0;
-  els.searchInput.value = "";
-  clearSelection();
-  renderRegionFilters();
+els.searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
   renderResults();
+  els.searchInput.blur();
+  if (window.matchMedia("(max-width: 820px)").matches) {
+    els.resultsColumn?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 });
 
 els.regionFilters.addEventListener("click", (event) => {
@@ -149,5 +152,23 @@ els.results.addEventListener("click", (event) => {
   const item = event.target.closest("[data-booth]");
   if (item) selectClub(Number(item.dataset.booth));
 });
+
+els.backToSearch.addEventListener("click", () => {
+  els.searchInput.focus({ preventScroll: true });
+  els.searchPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+if ("IntersectionObserver" in window) {
+  const mobileView = window.matchMedia("(max-width: 820px)");
+  let searchPanelVisible = true;
+  const updateBackToSearch = () => {
+    els.backToSearch.hidden = !mobileView.matches || searchPanelVisible;
+  };
+  new IntersectionObserver(([entry]) => {
+    searchPanelVisible = entry.isIntersecting;
+    updateBackToSearch();
+  }, { threshold: 0.1 }).observe(els.searchPanel);
+  mobileView.addEventListener?.("change", updateBackToSearch);
+}
 
 loadClubs();

@@ -12,7 +12,7 @@
       plausible.init({endpoint: "https://hpcgame.pku.edu.cn/api/event"})
     </script>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=20260909-mobile-results" />
+    <link rel="stylesheet" href="styles.css?v=20260909-mobile-search" />
   </head>
   <body>
     <header class="hero">
@@ -30,14 +30,14 @@
 
     <main class="page-shell">
       <section class="search-panel" aria-label="搜索社团">
-        <div class="search-row">
+        <form id="search-form" class="search-row" role="search">
           <label class="search-box" for="search-input">
             <span class="search-icon" aria-hidden="true">⌕</span>
-            <input id="search-input" type="search" autocomplete="off" placeholder="搜索社团名称，例如：Linux 俱乐部" />
+            <input id="search-input" type="search" autocomplete="off" enterkeyhint="search" placeholder="搜索社团名称，例如：Linux 俱乐部" />
             <button id="clear-search" class="icon-button" type="button" aria-label="清空搜索" title="清空搜索">×</button>
           </label>
-          <button id="all-results" class="text-button" type="button">查看全部</button>
-        </div>
+          <button class="search-submit" type="submit">搜索</button>
+        </form>
         <div class="filter-heading">
           <span>按区域筛选</span>
           <span id="result-count" class="result-count" aria-live="polite">正在读取名单…</span>
@@ -92,11 +92,16 @@
       </section>
     </main>
 
+    <button id="back-to-search" class="back-to-search" type="button" aria-label="返回搜索栏" hidden>
+      <span aria-hidden="true">↑</span>
+      <span>返回搜索</span>
+    </button>
+
     <footer class="footer">
       <span>北京大学社团文化节 · 测试版</span>
       <span>数据依据：2026 春季学期展位表</span>
     </footer>
 
-    <script src="app.js?v=20260909-mobile-results" defer></script>
+    <script src="app.js?v=20260909-mobile-search" defer></script>
   </body>
 </html>
