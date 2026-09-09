@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#123c34" />
+    <title>百团展位查询 | 北京大学社团文化节</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css?v=20260909-tip" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__inner">
+        <div class="eyebrow">PKU · 社团文化节</div>
+        <h1>百团展位查询</h1>
+        <p>输入社团名称，快速找到展位所在区域。</p>
+        <div class="hero__meta">
+          <span>2026 春季学期</span>
+          <span class="dot" aria-hidden="true"></span>
+          <span>燕园校区</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="search-panel" aria-label="搜索社团">
+        <div class="search-row">
+          <label class="search-box" for="search-input">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="search-input" type="search" autocomplete="off" placeholder="搜索社团名称，例如：击剑协会" />
+            <button id="clear-search" class="icon-button" type="button" aria-label="清空搜索" title="清空搜索">×</button>
+          </label>
+          <button id="all-results" class="text-button" type="button">查看全部</button>
+        </div>
+        <div class="filter-heading">
+          <span>按区域筛选</span>
+          <span id="result-count" class="result-count" aria-live="polite">正在读取名单…</span>
+        </div>
+        <div id="region-filters" class="region-filters" role="group" aria-label="展位区域"></div>
+      </section>
+
+      <section class="workspace" aria-label="查询结果和展位图">
+        <div class="results-column">
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">RESULTS</span>
+              <h2>社团名单</h2>
+            </div>
+            <span id="active-filter" class="active-filter">全部区域</span>
+          </div>
+          <div class="interaction-tip" role="note">
+            <span class="interaction-tip__icon" aria-hidden="true">↗</span>
+            <span>点击社团名称，地图将高亮对应区域</span>
+          </div>
+          <div id="results" class="results-list" aria-live="polite"></div>
+        </div>
+
+        <aside class="map-column">
+          <div class="map-card">
+            <div class="map-card__topline">
+              <div>
+                <span class="section-kicker">MAP</span>
+                <h2>展位总览</h2>
+              </div>
+              <span id="map-region" class="map-region">选择社团后查看区域</span>
+            </div>
+            <div class="map-frame">
+              <img src="assets/booth-map.jpg" alt="北京大学社团集体招新展位图" />
+              <div id="map-overlay" class="map-overlay" aria-hidden="true">
+                <div class="map-zone map-zone--1" data-map-zone="1"><span>①</span></div>
+                <div class="map-zone map-zone--2" data-map-zone="2"><span>②</span></div>
+                <div class="map-zone map-zone--3" data-map-zone="3"><span>③</span></div>
+                <div class="map-zone map-zone--4" data-map-zone="4"><span>④</span></div>
+                <div class="map-zone map-zone--5" data-map-zone="5"><span>⑤</span></div>
+                <div class="map-zone map-zone--6" data-map-zone="6"><span>⑥</span></div>
+                <div class="map-zone map-zone--7" data-map-zone="7"><span>⑦</span></div>
+                <div class="map-zone map-zone--8" data-map-zone="8"><span>⑧</span></div>
+              </div>
+            </div>
+            <div class="map-note">
+              <span class="note-mark" aria-hidden="true"></span>
+              <p>点击社团名称，地图会高亮对应区域。展位号对应推送中的编号，现场请以当日指引为准。</p>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>北京大学社团文化节 · 测试版</span>
+      <span>数据依据：2026 春季学期展位表</span>
+    </footer>
+
+    <script src="app.js?v=20260909-tip" defer></script>
+  </body>
+</html>
