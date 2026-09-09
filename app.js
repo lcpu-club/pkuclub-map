@@ -34,6 +34,43 @@ function getRegion(booth) {
   return REGION_RANGES.find((region) => booth >= region.min && booth <= region.max) || null;
 }
 
+function orderedCharacterScore(query, target, baseScore) {
+  if (query.length < 2 || query.length >= target.length) return -1;
+
+  let searchFrom = 0;
+  let firstMatch = -1;
+  let lastMatch = -1;
+  for (const character of query) {
+    const matchAt = target.indexOf(character, searchFrom);
+    if (matchAt === -1) return -1;
+    if (firstMatch === -1) firstMatch = matchAt;
+    lastMatch = matchAt;
+    searchFrom = matchAt + 1;
+  }
+
+  const gapCount = lastMatch - firstMatch + 1 - query.length;
+  return baseScore - gapCount * 6 - (target.length - query.length);
+}
+
+function matchScore(club, query) {
+  if (!query) return 0;
+
+  const name = normalize(club.name);
+  const aliases = (club.aliases || []).map(normalize).filter(Boolean);
+  if (name === query) return 1000;
+  if (aliases.includes(query)) return 950;
+  if (name.startsWith(query)) return 850;
+  if (aliases.some((alias) => alias.startsWith(query))) return 800;
+  if (name.includes(query)) return 700;
+  if (aliases.some((alias) => alias.includes(query))) return 650;
+
+  // 只接受原字符按顺序出现，不使用同音字、拼音或编辑距离替换。
+  return Math.max(
+    orderedCharacterScore(query, name, 450),
+    ...aliases.map((alias) => orderedCharacterScore(query, alias, 420)),
+  );
+}
+
 function renderRegionFilters() {
   const buttons = [{ id: 0, label: "全部", range: `${state.clubs.length} 个社团` }, ...REGION_RANGES];
   els.regionFilters.innerHTML = buttons.map((item) => {
@@ -44,11 +81,27 @@ function renderRegionFilters() {
 
 function filteredClubs() {
   const query = normalize(state.query);
-  return state.clubs.filter((club) => {
-    const inQuery = !query || normalize(club.name).includes(query);
+  const matches = state.clubs.map((club) => {
     const inRegion = !state.region || getRegion(club.booth)?.id === state.region;
-    return inQuery && inRegion;
-  });
+    return { club, score: inRegion ? matchScore(club, query) : -1 };
+  }).filter((item) => item.score >= 0);
+
+  if (!matches.length) return [];
+  const bestScore = Math.max(...matches.map((item) => item.score));
+  const minimumScore = !query
+    ? 0
+    : bestScore >= 1000
+      ? 1000
+      : bestScore >= 950
+        ? 950
+        : bestScore >= 650
+          ? 650
+          : bestScore - 24;
+  return matches.filter((item) => item.score >= minimumScore)
+    .sort((a, b) => query
+      ? b.score - a.score || a.club.name.length - b.club.name.length || a.club.booth - b.club.booth
+      : a.club.booth - b.club.booth)
+    .map((item) => item.club);
 }
 
 function renderResults() {
@@ -58,7 +111,7 @@ function renderResults() {
   els.resultCount.textContent = `${clubs.length} / ${state.clubs.length} 个社团`;
 
   if (!clubs.length) {
-    els.results.innerHTML = `<div class="empty-state">没有找到匹配的社团，试试更短的关键词。</div>`;
+    els.results.innerHTML = `<div class="empty-state">没有找到匹配的社团，请检查名称或尝试其他常用简称。</div>`;
     return;
   }
 
