@@ -283,7 +283,7 @@ h2 { margin-top: 6px; font-family: "Songti SC", SimSun, serif; font-size: 28px; 
   .hero__topline { min-height: 38px; font-size: 11px; letter-spacing: .03em; }
   .hero__topline-mark { display: none; }
   .hero__art { border-radius: 3px 3px 0 0; }
-  .hero__art img { aspect-ratio: 4 / 3; object-fit: cover; }
+  .hero__art img { height: auto; object-fit: contain; }
   .hero__title { padding: 18px 18px 20px; }
   .hero__title::after { right: 12px; width: 64px; }
   h1 { font-size: 30px; }
