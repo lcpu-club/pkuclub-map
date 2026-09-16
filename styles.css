@@ -276,7 +276,7 @@ h2 { margin-top: 6px; font-family: "Songti SC", SimSun, serif; font-size: 28px; 
 .map-note { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; color: #917563; font-size: 12px; line-height: 1.6; }
 .note-mark { flex: none; width: 7px; height: 7px; margin-top: 6px; border-radius: 50%; background: var(--gold); }
 
-.footer { display: flex; justify-content: space-between; gap: 16px; width: min(1180px, calc(100% - 40px)); margin: 46px auto 24px; padding-top: 16px; border-top: 1px solid #e1c99d; color: #947a69; font-size: 12px; }
+.footer { display: flex; justify-content: center; width: min(1180px, calc(100% - 40px)); margin: 46px auto 24px; padding-top: 16px; border-top: 1px solid #e1c99d; color: #947a69; font-size: 12px; text-align: center; }
 .back-to-search { display: none; position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(18px, calc(env(safe-area-inset-bottom) + 12px)); z-index: 20; align-items: center; gap: 7px; min-height: 44px; padding: 0 15px; border: 1px solid #edbd53; border-radius: 999px; color: #fff8e7; background: var(--red); box-shadow: 0 10px 26px rgba(103, 19, 19, .28); font-size: 14px; font-weight: 800; }
 .back-to-search[hidden] { display: none !important; }
 
@@ -318,7 +318,7 @@ h2 { margin-top: 6px; font-family: "Songti SC", SimSun, serif; font-size: 28px; 
   .result-item { padding: 14px 12px 14px 16px; }
   .result-meta { gap: 6px; }
   .region-tag { display: none; }
-  .footer { flex-direction: column; gap: 5px; margin-top: 34px; }
+  .footer { margin-top: 34px; }
 }
 
 @media (max-width: 390px) {
