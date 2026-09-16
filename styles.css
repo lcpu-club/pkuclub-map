@@ -286,7 +286,7 @@ h2 { margin-top: 6px; font-family: "Songti SC", SimSun, serif; font-size: 28px; 
   .results-column { order: 1; }
   .map-column { position: static; order: 2; }
   .map-card { padding: 15px; }
-  .back-to-search { display: inline-flex; }
+  .back-to-search { display: inline-flex; bottom: max(72px, calc(env(safe-area-inset-bottom) + 66px)); }
 }
 
 @media (max-width: 640px) {
