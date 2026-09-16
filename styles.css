@@ -251,13 +251,21 @@ h2 { margin-top: 6px; font-family: "Songti SC", SimSun, serif; font-size: 28px; 
   0%, 100% { box-shadow: 0 0 0 4px rgba(233, 163, 25, .34), 0 8px 20px rgba(72, 20, 16, .24); }
   50% { box-shadow: 0 0 0 10px rgba(233, 163, 25, .08), 0 8px 20px rgba(72, 20, 16, .24); }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .map-zone.is-highlighted { animation: none; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .map-zone.is-highlighted, .map-zone--5.is-highlighted svg { animation: none; } }
 .map-zone--1 { left: 42%; top: 56%; width: 24%; height: 7%; }
 .map-zone--2 { left: 34%; top: 63%; width: 10%; height: 26%; }
 .map-zone--3 { left: 42%; top: 39%; width: 24%; height: 8%; }
 .map-zone--4 { left: 26%; top: 39%; width: 16%; height: 8%; }
-.map-zone--5-horizontal { left: 27%; top: 51%; width: 13%; height: 6%; }
-.map-zone--5-vertical { left: 27%; top: 54%; width: 5%; height: 15%; }
+.map-zone--5 { left: 27%; top: 51%; width: 13%; height: 18%; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.map-zone--5 svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.map-zone--5 path { fill: rgba(169, 21, 29, .78); stroke: #fff1bd; stroke-linejoin: round; stroke-width: 4px; }
+.map-zone--5 span { position: absolute; top: 2px; left: 4px; z-index: 1; }
+.map-zone--5.is-highlighted { border: 0; background: transparent; box-shadow: none; animation: none; }
+.map-zone--5.is-highlighted svg { animation: map-zone-5-pulse 1.8s ease-in-out infinite; }
+@keyframes map-zone-5-pulse {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(233, 163, 25, .75)) drop-shadow(0 6px 8px rgba(72, 20, 16, .22)); }
+  50% { filter: drop-shadow(0 0 9px rgba(233, 163, 25, .35)) drop-shadow(0 6px 8px rgba(72, 20, 16, .22)); }
+}
 .map-zone--6 { left: 20%; top: 47%; width: 6%; height: 27%; }
 .map-zone--7 { left: 5%; top: 72%; width: 18%; height: 8%; }
 .map-zone--8 { left: 5%; top: 81%; width: 18%; height: 8%; }

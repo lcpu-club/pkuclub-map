@@ -12,7 +12,7 @@
       plausible.init({endpoint: "https://hpcgame.pku.edu.cn/api/event"})
     </script>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=20260916-map-controls" />
+    <link rel="stylesheet" href="styles.css?v=20260916-region-five" />
   </head>
   <body>
     <header class="hero">
@@ -87,8 +87,12 @@
                 <div class="map-zone map-zone--2" data-map-zone="2"><span>②</span></div>
                 <div class="map-zone map-zone--3" data-map-zone="3"><span>③</span></div>
                 <div class="map-zone map-zone--4" data-map-zone="4"><span>④</span></div>
-                <div class="map-zone map-zone--5-horizontal" data-map-zone="5"><span>⑤</span></div>
-                <div class="map-zone map-zone--5-vertical" data-map-zone="5"></div>
+                <div class="map-zone map-zone--5" data-map-zone="5">
+                  <svg viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M 5 5 H 95 V 42 H 38 V 135 H 5 Z" vector-effect="non-scaling-stroke"></path>
+                  </svg>
+                  <span>⑤</span>
+                </div>
                 <div class="map-zone map-zone--6" data-map-zone="6"><span>⑥</span></div>
                 <div class="map-zone map-zone--7" data-map-zone="7"><span>⑦</span></div>
                 <div class="map-zone map-zone--8" data-map-zone="8"><span>⑧</span></div>
@@ -114,6 +118,6 @@
       <span>数据依据：2026 秋季展位表</span>
     </footer>
 
-    <script src="app.js?v=20260916-map-controls" defer></script>
+    <script src="app.js?v=20260916-region-five" defer></script>
   </body>
 </html>
