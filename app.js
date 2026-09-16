@@ -5,8 +5,8 @@ const REGION_RANGES = [
   { id: 4, label: "区域④", range: "91–100", min: 91, max: 100 },
   { id: 5, label: "区域⑤", range: "101–120", min: 101, max: 120 },
   { id: 6, label: "区域⑥", range: "121–145", min: 121, max: 145 },
-  { id: 7, label: "区域⑦", range: "146–165", min: 146, max: 165 },
-  { id: 8, label: "区域⑧", range: "166–175", min: 166, max: 175 },
+  { id: 7, label: "区域⑦", range: "146–170", min: 146, max: 170 },
+  { id: 8, label: "区域⑧", range: "171–195", min: 171, max: 195 },
 ];
 
 const state = { clubs: [], query: "", region: 0, selectedBooth: null };
@@ -157,7 +157,7 @@ function selectClub(booth) {
 
 async function loadClubs() {
   try {
-    const response = await fetch("pku-2026-spring-booths.json");
+    const response = await fetch("pku-2026-fall-booths.json");
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     state.clubs = (await response.json()).sort((a, b) => a.booth - b.booth);
     renderRegionFilters();
