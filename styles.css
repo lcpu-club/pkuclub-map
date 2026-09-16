@@ -256,10 +256,15 @@ h2 { margin-top: 6px; font-family: "Songti SC", SimSun, serif; font-size: 28px; 
 .map-zone--2 { left: 34%; top: 63%; width: 10%; height: 26%; }
 .map-zone--3 { left: 42%; top: 39%; width: 24%; height: 8%; }
 .map-zone--4 { left: 26%; top: 39%; width: 16%; height: 8%; }
-.map-zone--5 { left: 25%; top: 50%; width: 17%; height: 10%; }
+.map-zone--5-horizontal { left: 27%; top: 51%; width: 13%; height: 6%; }
+.map-zone--5-vertical { left: 27%; top: 54%; width: 5%; height: 15%; }
 .map-zone--6 { left: 20%; top: 47%; width: 6%; height: 27%; }
 .map-zone--7 { left: 5%; top: 72%; width: 18%; height: 8%; }
 .map-zone--8 { left: 5%; top: 81%; width: 18%; height: 8%; }
+.clear-highlight { position: absolute; right: 12px; bottom: 12px; z-index: 6; min-height: 38px; padding: 0 14px; border: 1px solid #f5c760; border-radius: 999px; color: #fff8e6; background: var(--red-deep); box-shadow: 0 4px 14px rgba(72, 20, 16, .3); font-size: 13px; font-weight: 800; cursor: pointer; }
+.clear-highlight:hover { background: var(--red); }
+.clear-highlight:focus-visible { outline: 3px solid rgba(245, 199, 96, .7); outline-offset: 2px; }
+.clear-highlight[hidden] { display: none; }
 .map-note { display: flex; gap: 10px; align-items: flex-start; margin-top: 14px; color: #917563; font-size: 12px; line-height: 1.6; }
 .note-mark { flex: none; width: 7px; height: 7px; margin-top: 6px; border-radius: 50%; background: var(--gold); }
 

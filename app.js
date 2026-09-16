@@ -23,6 +23,7 @@ const els = {
   mapRegion: document.querySelector("#map-region"),
   mapFrame: document.querySelector(".map-frame"),
   mapZones: [...document.querySelectorAll("[data-map-zone]")],
+  clearHighlight: document.querySelector("#clear-highlight"),
   backToSearch: document.querySelector("#back-to-search"),
 };
 
@@ -128,6 +129,7 @@ function renderResults() {
 function renderMapHighlight() {
   const selectedRegion = state.selectedBooth == null ? null : getRegion(state.selectedBooth)?.id;
   els.mapFrame?.classList.toggle("has-highlight", selectedRegion != null);
+  if (els.clearHighlight) els.clearHighlight.hidden = selectedRegion == null;
   if (els.mapFrame) {
     els.mapFrame.dataset.highlightRegion = selectedRegion ? `区域${String.fromCharCode(9311 + selectedRegion)}` : "";
   }
@@ -204,6 +206,11 @@ els.regionFilters.addEventListener("click", (event) => {
 els.results.addEventListener("click", (event) => {
   const item = event.target.closest("[data-booth]");
   if (item) selectClub(Number(item.dataset.booth));
+});
+
+els.clearHighlight.addEventListener("click", () => {
+  clearSelection();
+  renderResults();
 });
 
 els.backToSearch.addEventListener("click", () => {
