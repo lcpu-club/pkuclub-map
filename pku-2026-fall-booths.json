@@ -1670,5 +1670,20 @@
     "name": "力工学院无线电小组",
     "booth": 188,
     "aliases": []
+  },
+  {
+    "name": "民乐团",
+    "booth": 189,
+    "aliases": []
+  },
+  {
+    "name": "创业圈",
+    "booth": 190,
+    "aliases": []
+  },
+  {
+    "name": "五四文学社",
+    "booth": 191,
+    "aliases": []
   }
 ]
