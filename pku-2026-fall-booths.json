@@ -1702,8 +1702,18 @@
     "aliases": []
   },
   {
-    "name": "导引社",
+    "name": "马术协会",
     "booth": 195,
+    "aliases": []
+  },
+  {
+    "name": "导引社",
+    "booth": 196,
+    "aliases": []
+  },
+  {
+    "name": "太极拳（王其和式）社",
+    "booth": 197,
     "aliases": []
   }
 ]
